@@ -10,5 +10,16 @@ the code explanation.
 =====================
 
     .. code-block:: cpp
+    .. code-block:: bash
+        
+        // clone repository
+       git clone git@github.com:EpitechPromo2027/B-CPP-500-COT-5-1-rtype-hanniel.degbelo.git
+
+Enter the repository
+
+    .. code-block:: bash
+
+        // build
+        cmake .. && make
 
       
