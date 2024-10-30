@@ -4,7 +4,7 @@ Main systems overviews
 This encompasses how the description of our system materializes the code
 
 Architecture Design pattern
-+++++++++++++++++++++++++++
+===========================
 According to the architecture, We are suppost to respect the ECS design pattern.
 To remind, this stand for entity component system
 
