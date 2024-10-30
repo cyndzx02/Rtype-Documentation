@@ -35,13 +35,14 @@ To summarize it we set to design our game with these goals
 Data structures for the project
 ===============================
 We used several data structures to make this project relevant
-#. Maps
-+++++++
+
+Maps
++++++
 Maps are associative containers that store elements formed by a combination of a key value and a
 mapped value, following a specific order.
 - The key values in a map,  are generally used to sort and uniquely identify the elements, while the mapped values store the content associated to this key.
 Example:
-++++++++
+-------
 
     .. code-block:: cpp
 
