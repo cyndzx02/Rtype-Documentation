@@ -12,8 +12,13 @@ To encompass this, let's cover up what is been done and why it's been done that 
 
 Used Algorithm
 ==============
-
-
+Looking at the algorithm being used in our project, let's take a typical example
+Talking about the RTYPE game the project request was that we make a replica of this game.
+So what is been done on the connection algo is the following:
+- We make 4 Player requests to join whule they wait in a room to get up to the number, the room is been calleda lobby.
+- We get their names in our database to make sure we recognize each players.
+We also folloewd the fact that the game is a shoot them up logic,
+So we managed shooting and movement im the game according to what is been said.
 
 Design patterns
 ================
@@ -103,14 +108,59 @@ Utility in our R-Type
 Custom-Designed Algorithms
 ==========================
 
+Asteroid generation
++++++++++++++++++++
+To generate our asteroids, on the server they get generated 4-5seconds and once they're
+been generated an alert is been sent to the client with the position x and y so that they can be displayed
+on the graphical interface.
+Looking at our protocol, It goes like this,
+- Syntax: ASTL [x y]
+  The command been called *ASTL* is been sent from the server to make awareness about the generation of new asteroids.
+  and it sends its position to the client for a clear display.
+
+Score Generation
+++++++++++++++++
+To make this happens, it is still the server that makes it happen.
+How does it go? First of all the command name is *PLAYER* . The client makes 
+a request to the server to know how many score he has in his store and based
+on the number of collision been made from the shots he sends the data in number
+to the client.
+Its syntax falls this way *PLAYER* *[PLAYER_SCORE]*
+
+Shooting Algorithm
+++++++++++++++++++
+The client shoot on the ennemies
+Syntax: *SHOOT*
+The client make a request when he clicks on a specific key on the keyboard.
+with this a specific sprite is attached to it to let it display and give the
+sensation of a shot been made.
+
+Players Death
+++++++++++++++
+Syntax: *DEAD [PLAYER_NUM]*
+The client requests for the player id from the server which stores each
+player names and send to the when a request equal to the syntax above is been sent.
+
 Storage
 =======
-a study of different storage techniques should be included in our comparative study,
-regarding persistence, reliability, and storage constraints.
+To manage storage we used two methods such as: 
+
+Assets management
++++++++++++++++++
+Looking at the storage, we made storage regarding our assets.
+To manage this we made sure we don't use overweighted assets in the projesct as well 
+as the weight of our package manager files.
+We chose lightweighted sprites, fonts and .ogg files to make sure it does'nt take too much space.
+
+Data management
++++++++++++++++
+We saved our datas in the project using c++ methods that are flexible and that manages multiplein-built functions
+to manipulates the storage of data's such as player names, number of asteroids and etc.
 
 Security
 =========
 security and data integrity must be managed and secured effectively.
 In our comparative study, it might be relevant to consider the main vulnerabilities
-of each technology. Also, explain how we implemented the security monitoring of those
-technologies, in the long term. To enlight on that,
+of each technology. To make this more clear to you, we ensure the security of
+our players identity by making their datas known to the server mainly. As well as the usage of configuration file
+stored with confidential infos. 

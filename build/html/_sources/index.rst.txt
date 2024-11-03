@@ -25,5 +25,6 @@ areas of our choice from a list of proposed options.
    Guidelines/Main systems overviews
    Guidelines/Tutorials and How-To's
    Guidelines/The Technical and Comparative Study
-   Guidelines/content
+   Guidelines/Cross-Platform Overview
+   Guidelines/CI-CD How-To's
 

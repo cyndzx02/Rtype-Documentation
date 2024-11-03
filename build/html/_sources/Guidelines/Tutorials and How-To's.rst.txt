@@ -19,7 +19,14 @@ Enter the repository
 
     .. code-block:: bash
 
-        // build
+        //open a terminal
+        cd B-CPP-500-COT-5-1-rtype-hanniel.degbelo
+        //then base on the directory R-Type_server or R-Type_client you\'ll type the following
+        //To launch ther server,do the following 
+        cd R-Type_server
+
+        mkdir build
+        cd build
         cmake .. && make
 
       

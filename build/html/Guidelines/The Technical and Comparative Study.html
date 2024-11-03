@@ -48,18 +48,36 @@
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Architectural%20diagrams.html">Architectural diagram</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Main%20systems%20overviews.html">Main systems overviews</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Main%20systems%20overviews.html#entity">Entity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Main%20systems%20overviews.html#component">Component</a></li>
-<li class="toctree-l1"><a class="reference internal" href="Main%20systems%20overviews.html#system">System</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tutorials%20and%20How-To%27s.html">Tutorials</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Technical and Comparative Study</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#used-algorithm">Used Algorithm</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#design-patterns">Design patterns</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#data-structures-for-the-project">Data structures for the project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#data-structures-for-the-project">Data structures for the project</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#maps">Maps</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#example">Example:</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#utility-in-our-r-type">Utility in our R-Type</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#shared-ptr">Shared_ptr</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">Utility in our R-Type</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id2">Example:</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#vector-of-pairs">Vector of Pairs</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">Example</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">Utility in our R-Type</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#custom-designed-algorithms">Custom-Designed Algorithms</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#storage">Storage</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#security">Security</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="content.html">Contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cross-Platform%20Overview.html">Cross-Platform Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CI-CD%20How-To%27s.html">CI/CD How-To’s</a></li>
 </ul>
 
         </div>
@@ -94,9 +112,9 @@
 <em>SFML</em> following the algorithm of the original <em>RTYPE</em> game logic and making it available
 over the network as well.</p>
 <p>To encompass this, let’s cover up what is been done and why it’s been done that way.</p>
-<ul class="simple">
-<li><p><strong>Used Algorithm</strong></p></li>
-</ul>
+<section id="used-algorithm">
+<h2>Used Algorithm<a class="headerlink" href="#used-algorithm" title="Link to this heading"></a></h2>
+</section>
 <section id="design-patterns">
 <h2>Design patterns<a class="headerlink" href="#design-patterns" title="Link to this heading"></a></h2>
 <p>Choosing this design patterns helps escape a lot of problems in developing our engine.
@@ -117,9 +135,78 @@ To summarize it we set to design our game with these goals</p>
 </section>
 <section id="data-structures-for-the-project">
 <h2>Data structures for the project<a class="headerlink" href="#data-structures-for-the-project" title="Link to this heading"></a></h2>
+<p>We used several data structures to make this project relevant</p>
+<section id="maps">
+<h3>Maps<a class="headerlink" href="#maps" title="Link to this heading"></a></h3>
+<p>Maps are associative containers that store elements formed by a combination of a key value and a
+mapped value, following a specific order.
+- The key values in a map,  are generally used to sort and uniquely identify the elements, while the mapped values store the content associated to this key.</p>
+<section id="example">
+<h4>Example:<a class="headerlink" href="#example" title="Link to this heading"></a></h4>
+<blockquote>
+<div><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="n">sf</span><span class="o">::</span><span class="n">Music</span><span class="o">&gt;</span><span class="w"> </span><span class="n">SongDico</span><span class="p">;</span>
+<span class="c1">//typical example used to store the sounds name and its file.</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="utility-in-our-r-type">
+<h4>Utility in our R-Type<a class="headerlink" href="#utility-in-our-r-type" title="Link to this heading"></a></h4>
+<p>Maps in our context we used to facilitate the management of files and
+their names through a configuration file. It will helps in the carriage
+and management of many files.</p>
+</section>
+</section>
+<section id="shared-ptr">
+<h3>Shared_ptr<a class="headerlink" href="#shared-ptr" title="Link to this heading"></a></h3>
+<p>Shared pointers have an associated control block that keeps track of the reference count for the managed object.
+This reference count is shared among all the copies of the shared_ptr instances pointing to the same
+object, ensuring proper memory management and deletion.</p>
+<section id="id1">
+<h4>Utility in our R-Type<a class="headerlink" href="#id1" title="Link to this heading"></a></h4>
+<p>The usage in our project was basically known for the attribution of an Id to each of the created composant
+For a better understanding see the example below;</p>
+</section>
+<section id="id2">
+<h4>Example:<a class="headerlink" href="#id2" title="Link to this heading"></a></h4>
+<blockquote>
+<div><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">map</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">type_index</span><span class="p">,</span><span class="w"> </span><span class="n">std</span><span class="o">::</span><span class="n">shared_ptr</span><span class="o">&lt;</span><span class="kt">void</span><span class="o">&gt;&gt;</span><span class="w"> </span><span class="n">componentArrays</span><span class="p">;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<section id="vector-of-pairs">
+<h3>Vector of Pairs<a class="headerlink" href="#vector-of-pairs" title="Link to this heading"></a></h3>
+<p>A vector of pairs is a std::vector container in which each element
+is of std::pair type. In C++, we can create a vector of pairs by
+passing std::pair of the desired type as the template parameter when
+declaring std::vector</p>
+<section id="id3">
+<h4>Example<a class="headerlink" href="#id3" title="Link to this heading"></a></h4>
+<blockquote>
+<div><div class="highlight-cpp notranslate"><div class="highlight"><pre><span></span><span class="n">std</span><span class="o">::</span><span class="n">vector</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">pair</span><span class="o">&lt;</span><span class="n">std</span><span class="o">::</span><span class="n">string</span><span class="p">,</span><span class="w"> </span><span class="kt">void</span><span class="o">*&gt;&gt;</span><span class="w"> </span><span class="n">_data</span><span class="p">;</span>
+<span class="c1">//std::string: Type of the key of all the pair elements.</span>
+<span class="c1">//void*: Type of the value of all the pair elements.</span>
+<span class="c1">//_data: name given to the vector of pairs</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+<section id="id4">
+<h4>Utility in our R-Type<a class="headerlink" href="#id4" title="Link to this heading"></a></h4>
 <ul class="simple">
-<li><p><strong>as well as our selection of new and custom-designed algorithms</strong></p></li>
+<li><p>Entity-Component Systems (ECS):
+Component Storage: Store components (e.g., position, velocity, health) as pairs,
+where the key is the entity ID and the value is the component data.
+Efficient Component Access: Quickly retrieve components for a given entity by searching
+the vector of pairs using the entity ID as the key.</p></li>
 </ul>
+</section>
+</section>
+</section>
+<section id="custom-designed-algorithms">
+<h2>Custom-Designed Algorithms<a class="headerlink" href="#custom-designed-algorithms" title="Link to this heading"></a></h2>
 </section>
 <section id="storage">
 <h2>Storage<a class="headerlink" href="#storage" title="Link to this heading"></a></h2>
@@ -131,7 +218,7 @@ regarding persistence, reliability, and storage constraints.</p>
 <p>security and data integrity must be managed and secured effectively.
 In our comparative study, it might be relevant to consider the main vulnerabilities
 of each technology. Also, explain how we implemented the security monitoring of those
-technologies, in the long term.</p>
+technologies, in the long term. To enlight on that,</p>
 </section>
 </section>
 

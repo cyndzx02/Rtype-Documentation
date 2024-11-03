@@ -47,13 +47,21 @@
               <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
 <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="Architectural%20diagrams.html">Architectural diagram</a></li>
-<li class="toctree-l1 current"><a class="current reference internal" href="#">Main systems overviews</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#entity">Entity</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#component">Component</a></li>
-<li class="toctree-l1"><a class="reference internal" href="#system">System</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Main systems overviews</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#architecture-design-pattern">Architecture Design pattern</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#advantage-of-using-the-ecs">Advantage of using the ECS</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#overview-of-the-architecture">Overview of the Architecture</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#entity">Entity</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#component">Component</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#system">System</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li class="toctree-l1"><a class="reference internal" href="Tutorials%20and%20How-To%27s.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="The%20Technical%20and%20Comparative%20Study.html">Technical and Comparative Study</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content.html">Contents</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cross-Platform%20Overview.html">Cross-Platform Overview</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CI-CD%20How-To%27s.html">CI/CD How-To’s</a></li>
 </ul>
 
         </div>
@@ -82,14 +90,15 @@
              
   <section id="main-systems-overviews">
 <h1>Main systems overviews<a class="headerlink" href="#main-systems-overviews" title="Link to this heading"></a></h1>
-<p>This encompasses how the description of our system materializes the code
-Architecture Design pattern
-+++++++++++++++++++++++++++
-According to the architecture, We are suppost to respect the ECS design pattern.
-To remind, this stand for entity component system
-Advantage of using the ECS
-==========================
-Choosing this design patterns helps escape a lot of problems in developing our engine.
+<p>This encompasses how the description of our system materializes the code</p>
+<section id="architecture-design-pattern">
+<h2>Architecture Design pattern<a class="headerlink" href="#architecture-design-pattern" title="Link to this heading"></a></h2>
+<p>According to the architecture, We are suppost to respect the ECS design pattern.
+To remind, this stand for entity component system</p>
+</section>
+<section id="advantage-of-using-the-ecs">
+<h2>Advantage of using the ECS<a class="headerlink" href="#advantage-of-using-the-ecs" title="Link to this heading"></a></h2>
+<p>Choosing this design patterns helps escape a lot of problems in developing our engine.
 First thing is the flexibility. To solve this ECS get started with a
 blank object that has only the default required to do its job.
 Due to inheritance trees might get messed up. In a gameplay inheritance can cause problems.
@@ -102,11 +111,13 @@ To summarize it we set to design our game with these goals
 #. Making our code simple and understandable for every developers
 #. Avoid a lot of if conditions to help avoid misprediction
 #. Have a minimal use of inheritance</p>
-<p>Another thing that we can do easily with the ECS is</p>
+<p>Another thing that we can do easily with the ECS is shown on the diagram below:</p>
 <a class="reference internal image-reference" href="../_images/ecs-explain.png"><img alt="../_images/ecs-explain.png" src="../_images/ecs-explain.png" style="width: 600px;" /></a>
 </section>
+<section id="overview-of-the-architecture">
+<h2>Overview of the Architecture<a class="headerlink" href="#overview-of-the-architecture" title="Link to this heading"></a></h2>
 <section id="entity">
-<h1>Entity<a class="headerlink" href="#entity" title="Link to this heading"></a></h1>
+<h3>Entity<a class="headerlink" href="#entity" title="Link to this heading"></a></h3>
 <p>An entity is simply an ID, that doesn’t contain anything.
 Instead the ID is used aspectsindex into an array of components.</p>
 <blockquote>
@@ -134,7 +145,7 @@ Instead the ID is used aspectsindex into an array of components.</p>
 </div></blockquote>
 </section>
 <section id="component">
-<h1>Component<a class="headerlink" href="#component" title="Link to this heading"></a></h1>
+<h3>Component<a class="headerlink" href="#component" title="Link to this heading"></a></h3>
 <p>A component is a struct of data. It is as simple as an entity.</p>
 <p>Example</p>
 <blockquote>
@@ -165,7 +176,7 @@ Instead the ID is used aspectsindex into an array of components.</p>
 </div></blockquote>
 </section>
 <section id="system">
-<h1>System<a class="headerlink" href="#system" title="Link to this heading"></a></h1>
+<h3>System<a class="headerlink" href="#system" title="Link to this heading"></a></h3>
 <p>It embodies the whole logic of the game.
 The behaviour behind each entity component.</p>
 <blockquote>
@@ -181,6 +192,8 @@ The behaviour behind each entity component.</p>
 </pre></div>
 </div>
 </div></blockquote>
+</section>
+</section>
 </section>
 
 
