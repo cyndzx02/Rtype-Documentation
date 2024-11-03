@@ -21,7 +21,7 @@
     <script src="../_static/js/theme.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Contents" href="content.html" />
+    <link rel="next" title="Cross-Platform Overview" href="Cross-Platform%20Overview.html" />
     <link rel="prev" title="Tutorials" href="Tutorials%20and%20How-To%27s.html" /> 
 </head>
 
@@ -70,12 +70,21 @@
 </li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="#custom-designed-algorithms">Custom-Designed Algorithms</a></li>
-<li class="toctree-l2"><a class="reference internal" href="#storage">Storage</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#custom-designed-algorithms">Custom-Designed Algorithms</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#asteroid-generation">Asteroid generation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#score-generation">Score Generation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#shooting-algorithm">Shooting Algorithm</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#players-death">Players Death</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#storage">Storage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#assets-management">Assets management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-management">Data management</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="#security">Security</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="content.html">Contents</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Cross-Platform%20Overview.html">Cross-Platform Overview</a></li>
 <li class="toctree-l1"><a class="reference internal" href="CI-CD%20How-To%27s.html">CI/CD How-To’s</a></li>
 </ul>
@@ -114,6 +123,13 @@ over the network as well.</p>
 <p>To encompass this, let’s cover up what is been done and why it’s been done that way.</p>
 <section id="used-algorithm">
 <h2>Used Algorithm<a class="headerlink" href="#used-algorithm" title="Link to this heading"></a></h2>
+<p>Looking at the algorithm being used in our project, let’s take a typical example
+Talking about the RTYPE game the project request was that we make a replica of this game.
+So what is been done on the connection algo is the following:
+- We make 4 Player requests to join whule they wait in a room to get up to the number, the room is been calleda lobby.
+- We get their names in our database to make sure we recognize each players.
+We also folloewd the fact that the game is a shoot them up logic,
+So we managed shooting and movement im the game according to what is been said.</p>
 </section>
 <section id="design-patterns">
 <h2>Design patterns<a class="headerlink" href="#design-patterns" title="Link to this heading"></a></h2>
@@ -207,18 +223,65 @@ the vector of pairs using the entity ID as the key.</p></li>
 </section>
 <section id="custom-designed-algorithms">
 <h2>Custom-Designed Algorithms<a class="headerlink" href="#custom-designed-algorithms" title="Link to this heading"></a></h2>
+<section id="asteroid-generation">
+<h3>Asteroid generation<a class="headerlink" href="#asteroid-generation" title="Link to this heading"></a></h3>
+<p>To generate our asteroids, on the server they get generated 4-5seconds and once they’re
+been generated an alert is been sent to the client with the position x and y so that they can be displayed
+on the graphical interface.
+Looking at our protocol, It goes like this,
+- Syntax: ASTL [x y]</p>
+<blockquote>
+<div><p>The command been called <em>ASTL</em> is been sent from the server to make awareness about the generation of new asteroids.
+and it sends its position to the client for a clear display.</p>
+</div></blockquote>
+</section>
+<section id="score-generation">
+<h3>Score Generation<a class="headerlink" href="#score-generation" title="Link to this heading"></a></h3>
+<p>To make this happens, it is still the server that makes it happen.
+How does it go? First of all the command name is <em>PLAYER</em> . The client makes
+a request to the server to know how many score he has in his store and based
+on the number of collision been made from the shots he sends the data in number
+to the client.
+Its syntax falls this way <em>PLAYER</em> <em>[PLAYER_SCORE]</em></p>
+</section>
+<section id="shooting-algorithm">
+<h3>Shooting Algorithm<a class="headerlink" href="#shooting-algorithm" title="Link to this heading"></a></h3>
+<p>The client shoot on the ennemies
+Syntax: <em>SHOOT</em>
+The client make a request when he clicks on a specific key on the keyboard.
+with this a specific sprite is attached to it to let it display and give the
+sensation of a shot been made.</p>
+</section>
+<section id="players-death">
+<h3>Players Death<a class="headerlink" href="#players-death" title="Link to this heading"></a></h3>
+<p>Syntax: <em>DEAD [PLAYER_NUM]</em>
+The client requests for the player id from the server which stores each
+player names and send to the when a request equal to the syntax above is been sent.</p>
+</section>
 </section>
 <section id="storage">
 <h2>Storage<a class="headerlink" href="#storage" title="Link to this heading"></a></h2>
-<p>a study of different storage techniques should be included in our comparative study,
-regarding persistence, reliability, and storage constraints.</p>
+<p>To manage storage we used two methods such as:</p>
+<section id="assets-management">
+<h3>Assets management<a class="headerlink" href="#assets-management" title="Link to this heading"></a></h3>
+<p>Looking at the storage, we made storage regarding our assets.
+To manage this we made sure we don’t use overweighted assets in the projesct as well
+as the weight of our package manager files.
+We chose lightweighted sprites, fonts and .ogg files to make sure it does’nt take too much space.</p>
+</section>
+<section id="data-management">
+<h3>Data management<a class="headerlink" href="#data-management" title="Link to this heading"></a></h3>
+<p>We saved our datas in the project using c++ methods that are flexible and that manages multiplein-built functions
+to manipulates the storage of data’s such as player names, number of asteroids and etc.</p>
+</section>
 </section>
 <section id="security">
 <h2>Security<a class="headerlink" href="#security" title="Link to this heading"></a></h2>
 <p>security and data integrity must be managed and secured effectively.
 In our comparative study, it might be relevant to consider the main vulnerabilities
-of each technology. Also, explain how we implemented the security monitoring of those
-technologies, in the long term. To enlight on that,</p>
+of each technology. To make this more clear to you, we ensure the security of
+our players identity by making their datas known to the server mainly. As well as the usage of configuration file
+stored with confidential infos.</p>
 </section>
 </section>
 
@@ -227,7 +290,7 @@ technologies, in the long term. To enlight on that,</p>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
         <a href="Tutorials%20and%20How-To%27s.html" class="btn btn-neutral float-left" title="Tutorials" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
-        <a href="content.html" class="btn btn-neutral float-right" title="Contents" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
+        <a href="Cross-Platform%20Overview.html" class="btn btn-neutral float-right" title="Cross-Platform Overview" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 
   <hr/>

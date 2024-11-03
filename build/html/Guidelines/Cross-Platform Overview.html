@@ -22,7 +22,7 @@
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="CI/CD How-To’s" href="CI-CD%20How-To%27s.html" />
-    <link rel="prev" title="Contents" href="content.html" /> 
+    <link rel="prev" title="Technical and Comparative Study" href="The%20Technical%20and%20Comparative%20Study.html" /> 
 </head>
 
 <body class="wy-body-for-nav"> 
@@ -50,22 +50,19 @@
 <li class="toctree-l1"><a class="reference internal" href="Main%20systems%20overviews.html">Main systems overviews</a></li>
 <li class="toctree-l1"><a class="reference internal" href="Tutorials%20and%20How-To%27s.html">Tutorials</a></li>
 <li class="toctree-l1"><a class="reference internal" href="The%20Technical%20and%20Comparative%20Study.html">Technical and Comparative Study</a></li>
-<li class="toctree-l1"><a class="reference internal" href="content.html">Contents</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Cross-Platform Overview</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#steps">Steps</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="#install-conan-if-you-don-t-already-have-it">1. Install conan if you don’t already have it:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#then-create-a-conan-profile-for-each-environment">2. Then create a conan profile for each environment:</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#install-the-dependencies-at-the-root-of-the-project">3. Install the dependencies at the root of the project.</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#to-do-this-use-on">4. To do this, use on :</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#a-linux">a. Linux</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#b-windows">b. Windows:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#choice-of-package-manager">Choice of Package Manager</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#features-of-conan">Features of Conan</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#steps">Steps</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="#create-a-build-folder-and-enter">5.  Create a build folder and enter :</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#the-linux-build">6.  The Linux build</a></li>
-<li class="toctree-l3"><a class="reference internal" href="#windows-build">7. Windows build</a></li>
-</ul>
-</li>
+<li class="toctree-l2"><a class="reference internal" href="#install-conan-if-you-don-t-already-have-it">1. Install conan if you don’t already have it:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#then-create-a-conan-profile-for-each-environment">2. Then create a conan profile for each environment:</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#install-the-dependencies-at-the-root-of-the-project">3. Install the dependencies at the root of the project.</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#to-do-this-use-on">4. To do this, use on :</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#create-a-build-folder-and-enter">5.  Create a build folder and enter :</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#the-linux-build">6.  The Linux build</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#windows-build">7. Windows build</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="CI-CD%20How-To%27s.html">CI/CD How-To’s</a></li>
@@ -106,11 +103,33 @@ get started with.</p>
 </div></blockquote>
 <p>Dear developers, please make yourself a nice cup of tea and
 start installing Visual Studio (via Visual Studio Installer)
-on your Windows environment. your Windows environment.</p>
+on your Windows environment. your Windows environment.
+The cross-platform or multiplatform software is a type of application/software that works on
+various operating systems or devices, which are often called platforms.
+A platform means an operating system such as Windows or Linux.
+In our context, Our program must be able to run on both windows and linux.</p>
+<section id="choice-of-package-manager">
+<h2>Choice of Package Manager<a class="headerlink" href="#choice-of-package-manager" title="Link to this heading"></a></h2>
+<p>Conan is an open-source package manager designed specifically for C and C++ developers.
+It’s a powerful tool that helps manage dependencies, binaries, and build configurations
+across different platforms and build systems.
+Here are some key features of Conan:</p>
+</section>
+<section id="features-of-conan">
+<h2>Features of Conan<a class="headerlink" href="#features-of-conan" title="Link to this heading"></a></h2>
+<ol class="arabic simple">
+<li><p>Universal and Portable: Works on all major operating systems, including Windows, Linux, macOS, FreeBSD, and more.</p></li>
+<li><p>Decentralized: You can host your own packages on your server, privately</p></li>
+<li><p>Integration: Works seamlessly with various build systems like CMake, MSBuild, Makefiles, Meson, and SCons</p></li>
+<li><p>Binary Management: Can create, upload, and download binaries for different configurations and platforms</p></li>
+<li><p>Community and Support: Backed by a large community and a team of full-time maintainers</p></li>
+</ol>
 <section id="steps">
-<h2>Steps<a class="headerlink" href="#steps" title="Link to this heading"></a></h2>
+<h3>Steps<a class="headerlink" href="#steps" title="Link to this heading"></a></h3>
+</section>
+</section>
 <section id="install-conan-if-you-don-t-already-have-it">
-<h3>1. Install conan if you don’t already have it:<a class="headerlink" href="#install-conan-if-you-don-t-already-have-it" title="Link to this heading"></a></h3>
+<h2>1. Install conan if you don’t already have it:<a class="headerlink" href="#install-conan-if-you-don-t-already-have-it" title="Link to this heading"></a></h2>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>pip<span class="w"> </span>install<span class="w"> </span>conan<span class="w"> </span><span class="c1">#(on windows and linux).</span>
 </pre></div>
@@ -118,7 +137,7 @@ on your Windows environment. your Windows environment.</p>
 </div></blockquote>
 </section>
 <section id="then-create-a-conan-profile-for-each-environment">
-<h3>2. Then create a conan profile for each environment:<a class="headerlink" href="#then-create-a-conan-profile-for-each-environment" title="Link to this heading"></a></h3>
+<h2>2. Then create a conan profile for each environment:<a class="headerlink" href="#then-create-a-conan-profile-for-each-environment" title="Link to this heading"></a></h2>
 <ul>
 <li><p>Linux:</p>
 <blockquote>
@@ -145,20 +164,15 @@ everything.</p>
 </div></blockquote>
 </section>
 <section id="install-the-dependencies-at-the-root-of-the-project">
-<h3>3. Install the dependencies at the root of the project.<a class="headerlink" href="#install-the-dependencies-at-the-root-of-the-project" title="Link to this heading"></a></h3>
+<h2>3. Install the dependencies at the root of the project.<a class="headerlink" href="#install-the-dependencies-at-the-root-of-the-project" title="Link to this heading"></a></h2>
 </section>
 <section id="to-do-this-use-on">
-<h3>4. To do this, use on :<a class="headerlink" href="#to-do-this-use-on" title="Link to this heading"></a></h3>
-<section id="a-linux">
-<h4>a. Linux<a class="headerlink" href="#a-linux" title="Link to this heading"></a></h4>
+<h2>4. To do this, use on :<a class="headerlink" href="#to-do-this-use-on" title="Link to this heading"></a></h2>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conan<span class="w"> </span>install<span class="w"> </span>.<span class="w"> </span>--profile:host<span class="o">=</span>linux_profile<span class="w"> </span>--build<span class="o">=</span>missing
 </pre></div>
 </div>
 </div></blockquote>
-</section>
-<section id="b-windows">
-<h4>b. Windows:<a class="headerlink" href="#b-windows" title="Link to this heading"></a></h4>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>conan<span class="w"> </span>install<span class="w"> </span>.<span class="w"> </span>--profile:host<span class="o">=</span>windows_profile<span class="w"> </span>--build<span class="o">=</span>missing
 </pre></div>
@@ -171,9 +185,8 @@ voluminous.</p>
 </div>
 </div></blockquote>
 </section>
-</section>
 <section id="create-a-build-folder-and-enter">
-<h3>5.  Create a build folder and enter :<a class="headerlink" href="#create-a-build-folder-and-enter" title="Link to this heading"></a></h3>
+<h2>5.  Create a build folder and enter :<a class="headerlink" href="#create-a-build-folder-and-enter" title="Link to this heading"></a></h2>
 <blockquote>
 <div><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir<span class="w"> </span>build
 <span class="nb">cd</span><span class="w"> </span>build
@@ -188,12 +201,11 @@ in there as it doesn’t compile)</p>
 </div></blockquote>
 </section>
 <section id="the-linux-build">
-<h3>6.  The Linux build<a class="headerlink" href="#the-linux-build" title="Link to this heading"></a></h3>
+<h2>6.  The Linux build<a class="headerlink" href="#the-linux-build" title="Link to this heading"></a></h2>
 <p>If you didn’t like linux before, this is the part that will make you love and respect it.
 respect it if you ever have the misfortune to go through what I did.</p>
 <ol class="loweralpha">
-<li><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>.<span class="w"> </span>-DCMAKE_TOOLCHAIN_FILE<span class="o">=</span>conan_toolchain.cmake<span class="w"> </span>-
-<span class="nv">DCMAKE_BUILD_TYPE</span><span class="o">=</span>Release
+<li><div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>cmake<span class="w"> </span>..<span class="w"> </span>-DCMAKE_TOOLCHAIN_FILE<span class="o">=</span>conan_toolchain.cmake<span class="w"> </span>-DCMAKE_BUILD_TYPE<span class="o">=</span>Release
 </pre></div>
 </div>
 </li>
@@ -205,7 +217,7 @@ respect it if you ever have the misfortune to go through what I did.</p>
 <p>That’s all there is to it. Simple, effective, precise in case of error.</p>
 </section>
 <section id="windows-build">
-<h3>7. Windows build<a class="headerlink" href="#windows-build" title="Link to this heading"></a></h3>
+<h2>7. Windows build<a class="headerlink" href="#windows-build" title="Link to this heading"></a></h2>
 <p>If you want a reason never to mix Windows (with its visual
 studio) and programming, take the last commit before my series of
 cross-plateform commits and launch the build.</p>
@@ -234,13 +246,12 @@ That’s it for cross-plateform. Thank you for reading it, and I hope it will he
 compile the project easily.</p>
 </section>
 </section>
-</section>
 
 
            </div>
           </div>
           <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
-        <a href="content.html" class="btn btn-neutral float-left" title="Contents" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+        <a href="The%20Technical%20and%20Comparative%20Study.html" class="btn btn-neutral float-left" title="Technical and Comparative Study" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
         <a href="CI-CD%20How-To%27s.html" class="btn btn-neutral float-right" title="CI/CD How-To’s" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right" aria-hidden="true"></span></a>
     </div>
 

@@ -1,13 +1,32 @@
 ***********************
 Cross-Platform Overview
 ***********************
-
     .. note:: This document encompasses how the cross-platform works and how you can
         get started with.
 
 Dear developers, please make yourself a nice cup of tea and 
 start installing Visual Studio (via Visual Studio Installer) 
 on your Windows environment. your Windows environment.
+The cross-platform or multiplatform software is a type of application/software that works on
+various operating systems or devices, which are often called platforms.
+A platform means an operating system such as Windows or Linux.
+In our context, Our program must be able to run on both windows and linux.
+
+Choice of Package Manager
+=========================
+Conan is an open-source package manager designed specifically for C and C++ developers.
+It's a powerful tool that helps manage dependencies, binaries, and build configurations
+across different platforms and build systems.
+Here are some key features of Conan:
+
+Features of Conan
+=================
+1. Universal and Portable: Works on all major operating systems, including Windows, Linux, macOS, FreeBSD, and more.
+2. Decentralized: You can host your own packages on your server, privately
+3. Integration: Works seamlessly with various build systems like CMake, MSBuild, Makefiles, Meson, and SCons
+4. Binary Management: Can create, upload, and download binaries for different configurations and platforms
+5. Community and Support: Backed by a large community and a team of full-time maintainers
+
 
 =====
 Steps
@@ -84,8 +103,7 @@ a.
 
     .. code-block:: bash
 
-        cmake . -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake -
-        DCMAKE_BUILD_TYPE=Release
+        cmake .. -DCMAKE_TOOLCHAIN_FILE=conan_toolchain.cmake -DCMAKE_BUILD_TYPE=Release
 
 b. 
 
@@ -115,7 +133,7 @@ The -DCMAKE_TOOLCHAIN_FILE=...\conan_toolchain.cmake for its part
 specifies that the toolchain file generated when installing
 dependencies is located at the root of the project.
 
-b. 
+b.
 
     .. code-block:: bash
 

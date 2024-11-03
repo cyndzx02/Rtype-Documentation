@@ -11,29 +11,29 @@ the code explanation.
 You must take through the installation of conan first.
 But still, Let's clone the repository.
 
-- Open a terminal
+1. Open a terminal
 ====================
 
     .. code-block:: bash
 
         git clone git@github.com:EpitechPromo2027/B-CPP-500-COT-5-1-rtype-hanniel.degbelo.git
 
-- Enter the repository
-======================
+2. Enter the repository
+=======================
 
 .. code-block:: bash
 
         cd B-CPP-500-COT-5-1-rtype-hanniel.degbelo
 
-- Then switch to the right branch
-=================================
+3. Then switch to the right branch
+==================================
 
 .. code-block:: bash
 
         git checkout Engine
 
-- Then you're good to Go with teh next steps
-============================================
+4. Then you're good to Go with teh next steps
+=============================================
 
 =====
 Steps
@@ -161,6 +161,7 @@ in it you'll find the binary. You'll
 just need to do the following:
 
     .. code-block:: bash
+
         ./build/R-Type_server/r-type_server
 
 
@@ -172,4 +173,5 @@ in it you'll find the binary. You'll
 just need to do the following:
 
 .. code-block:: bash
+
         ./build/R-Type_client/r-type_client
