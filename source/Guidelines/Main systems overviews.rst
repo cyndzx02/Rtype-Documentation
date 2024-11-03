@@ -1,6 +1,6 @@
+**********************
 Main systems overviews
-======================
-
+**********************
 This encompasses how the description of our system materializes the code
 
 Architecture Design pattern
@@ -24,14 +24,16 @@ To summarize it we set to design our game with these goals
 #. Avoid a lot of if conditions to help avoid misprediction
 #. Have a minimal use of inheritance
 
-Another thing that we can do easily with the ECS is
+Another thing that we can do easily with the ECS is shown on the diagram below:
 
 .. image:: images/ecs-explain.png
    :width: 600
 .. :height: 500
 
+Overview of the Architecture
+============================
 Entity
-======
+******
 An entity is simply an ID, that doesn't contain anything.
 Instead the ID is used aspectsindex into an array of components.
 
@@ -58,7 +60,7 @@ Instead the ID is used aspectsindex into an array of components.
         }
 
 Component
-=========
+*********
 A component is a struct of data. It is as simple as an entity.
 
 Example
@@ -89,7 +91,7 @@ Regarding our components, we came up with this.
         }
 
 System
-======
+******
 It embodies the whole logic of the game.
 The behaviour behind each entity component.
 

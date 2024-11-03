@@ -21,6 +21,7 @@ exclude_patterns = []
 pygments_style = 'sphinx'
 highlight_language = 'cpp'
 
+formats: all
 
 # -- Options for HTML output -------------------------------------------------
 # https://www.sphinx-doc.org/en/master/usage/configuration.html#options-for-html-output

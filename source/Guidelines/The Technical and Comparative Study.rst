@@ -37,34 +37,68 @@ Data structures for the project
 We used several data structures to make this project relevant
 
 Maps
-+++++
+++++
 Maps are associative containers that store elements formed by a combination of a key value and a
 mapped value, following a specific order.
 - The key values in a map,  are generally used to sort and uniquely identify the elements, while the mapped values store the content associated to this key.
+
 Example:
--------
+--------
 
     .. code-block:: cpp
 
         std::map<std::string, sf::Music> SongDico; 
         //typical example used to store the sounds name and its file.
 
-- Maps in our context we used to facilitate the management of files and
-  their names through a configuration file. It will helps in the carriage
-  and management of many files.
+Utility in our R-Type
+---------------------
+Maps in our context we used to facilitate the management of files and
+their names through a configuration file. It will helps in the carriage
+and management of many files.
 
-#. Shared_ptr
-shared pointers have an associated control block that keeps track of the reference count for the managed object.
+Shared_ptr
+++++++++++
+Shared pointers have an associated control block that keeps track of the reference count for the managed object.
 This reference count is shared among all the copies of the shared_ptr instances pointing to the same
 object, ensuring proper memory management and deletion.
+
+Utility in our R-Type
+---------------------
 The usage in our project was basically known for the attribution of an Id to each of the created composant 
 For a better understanding see the example below;
-Example
+
+Example:
+--------
 
     .. code-block:: cpp
 
         std::map<std::type_index, std::shared_ptr<void>> componentArrays;
 
+
+Vector of Pairs
++++++++++++++++
+A vector of pairs is a std::vector container in which each element 
+is of std::pair type. In C++, we can create a vector of pairs by 
+passing std::pair of the desired type as the template parameter when
+declaring std::vector
+
+Example
+-------
+    .. code-block:: cpp
+
+      std::vector<std::pair<std::string, void*>> _data; 
+      //std::string: Type of the key of all the pair elements.
+      //void*: Type of the value of all the pair elements.
+      //_data: name given to the vector of pairs
+
+
+Utility in our R-Type
+---------------------
+- Entity-Component Systems (ECS):
+  Component Storage: Store components (e.g., position, velocity, health) as pairs, 
+  where the key is the entity ID and the value is the component data.
+  Efficient Component Access: Quickly retrieve components for a given entity by searching 
+  the vector of pairs using the entity ID as the key.
 
 Custom-Designed Algorithms
 ==========================
