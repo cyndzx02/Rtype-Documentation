@@ -155,3 +155,21 @@ compile the project easily.
 
 Server Launching
 ++++++++++++++++
+To launch the server enter the build directory
+you'll find a R-Type_server directory.
+in it you'll find the binary. You'll
+just need to do the following:
+
+    .. code-block:: bash
+        ./build/R-Type_server/r-type_server
+
+
+Client Launching
+++++++++++++++++
+To launch the client enter the build directory
+you'll find a R-Type_client directory.
+in it you'll find the binary. You'll
+just need to do the following:
+
+.. code-block:: bash
+        ./build/R-Type_client/r-type_client
