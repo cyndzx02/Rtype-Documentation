@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="en" data-content_root="../">
+<head>
+  <meta charset="utf-8" /><meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CI/CD How-To’s &mdash; The Developer Documentation 2024 documentation</title>
+      <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=fa44fd50" />
+      <link rel="stylesheet" type="text/css" href="../_static/css/theme.css?v=19f00094" />
+
+  
+  <!--[if lt IE 9]>
+    <script src="../_static/js/html5shiv.min.js"></script>
+  <![endif]-->
+  
+        <script src="../_static/jquery.js?v=5d32c60e"></script>
+        <script src="../_static/_sphinx_javascript_frameworks_compat.js?v=2cd50e6c"></script>
+        <script src="../_static/documentation_options.js?v=6fefd858"></script>
+        <script src="../_static/doctools.js?v=9a2dae69"></script>
+        <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/js/theme.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="Cross-Platform Overview" href="Cross-Platform%20Overview.html" /> 
+</head>
+
+<body class="wy-body-for-nav"> 
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+
+          
+          
+          <a href="../index.html" class="icon icon-home">
+            The Developer Documentation
+          </a>
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" aria-label="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+        </div><div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Navigation menu">
+              <p class="caption" role="heading"><span class="caption-text">Contents</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="Architectural%20diagrams.html">Architectural diagram</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Main%20systems%20overviews.html">Main systems overviews</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Tutorials%20and%20How-To%27s.html">Tutorials</a></li>
+<li class="toctree-l1"><a class="reference internal" href="The%20Technical%20and%20Comparative%20Study.html">Technical and Comparative Study</a></li>
+<li class="toctree-l1"><a class="reference internal" href="Cross-Platform%20Overview.html">Cross-Platform Overview</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">CI/CD How-To’s</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#workflow-structure">Workflow structure</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#the-name">The name</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-events-triggers">The events triggers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-jobs">The Jobs</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#the-job-steps">The job steps</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#how-to-test-the-workflow">How to test the workflow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#pushing-modifications-to-github">Pushing modifications to GitHub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#receive-a-message-via-outlook">Receive a message via Outlook</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#check-your-workflow-on-github">Check your workflow on GitHub</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#overview-of-the-workflow-file">Overview of the Workflow file</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#conclusion">Conclusion</a></li>
+</ul>
+</li>
+</ul>
+
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap"><nav class="wy-nav-top" aria-label="Mobile navigation menu" >
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">The Developer Documentation</a>
+      </nav>
+
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="Page navigation">
+  <ul class="wy-breadcrumbs">
+      <li><a href="../index.html" class="icon icon-home" aria-label="Home"></a></li>
+      <li class="breadcrumb-item active">CI/CD How-To’s</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../_sources/Guidelines/CI-CD How-To&#39;s.rst.txt" rel="nofollow"> View page source</a>
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+             
+  <section id="ci-cd-how-to-s">
+<h1>CI/CD How-To’s<a class="headerlink" href="#ci-cd-how-to-s" title="Link to this heading"></a></h1>
+<p>This document describes a GitHub Actions workflow used to automate the building of our R-type project on a Fedora image. The workflow is triggered by push and pull request events on the main and Engine branches.</p>
+<section id="workflow-structure">
+<h2>Workflow structure<a class="headerlink" href="#workflow-structure" title="Link to this heading"></a></h2>
+<p>The YAML file is structured in several sections:</p>
+<section id="the-name">
+<h3>The name<a class="headerlink" href="#the-name" title="Link to this heading"></a></h3>
+<blockquote>
+<div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">workflow_linux</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>-This line defines the workflow name. Here, it is simply called workflow.</p>
+</section>
+<section id="the-events-triggers">
+<h3>The events triggers<a class="headerlink" href="#the-events-triggers" title="Link to this heading"></a></h3>
+<blockquote>
+<div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">on</span><span class="p">:</span>
+<span class="nt">push</span><span class="p">:</span>
+<span class="nt">branches</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Engine</span>
+<span class="nt">pull_request</span><span class="p">:</span>
+<span class="nt">branches</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Engine</span>
+</pre></div>
+</div>
+</div></blockquote>
+<dl class="simple">
+<dt>This section defines the events that trigger the workflow:</dt><dd><ul class="simple">
+<li><p>push: The workflow is executed when code is pushed to the main or Engine branches.</p></li>
+<li><p>pull_request : The workflow runs when a pull request is opened to the main or Engine branches.</p></li>
+</ul>
+</dd>
+</dl>
+</section>
+<section id="the-jobs">
+<h3>The Jobs<a class="headerlink" href="#the-jobs" title="Link to this heading"></a></h3>
+<p>The workflow contains a job called build_linux :</p>
+<blockquote>
+<div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">jobs</span><span class="p">:</span>
+<span class="nt">build_linux</span><span class="p">:</span>
+<span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="nt">container</span><span class="p">:</span>
+<span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fedora:latest</span>
+</pre></div>
+</div>
+</div></blockquote>
+<p>runs-on: Defines the environment where the job runs. Here, it’s ubuntu-latest, but it uses a Fedora container.
+container: Specifies the container image to be used for the job.</p>
+</section>
+<section id="the-job-steps">
+<h3>The job steps<a class="headerlink" href="#the-job-steps" title="Link to this heading"></a></h3>
+<p>Each job consists of steps that describe the actions to be performed:</p>
+<ul>
+<li><p>Check code:</p>
+<blockquote>
+<div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="c1"># Uses the checkout action to retrieve source code from the repository.</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Check code</span>
+<span class="nt">uses</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>The example below describes how dependencies are installed:</p>
+<blockquote>
+<div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install dependencies</span>
+<span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="l l-Scalar l-Scalar-Plain">sudo dnf -y update</span>
+<span class="l l-Scalar l-Scalar-Plain">sudo dnf install -y boost-devel</span>
+<span class="l l-Scalar l-Scalar-Plain">sudo dnf install -y SFML-devel</span>
+<span class="l l-Scalar l-Scalar-Plain">sudo dnf install -y gcc-c++</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+<p>Updates the system and installs the necessary dependencies for the project, based on all the libraries used in the project.</p>
+<ul>
+<li><p>Install Conan:</p>
+<blockquote>
+<div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install Conan</span>
+<span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="l l-Scalar l-Scalar-Plain">sudo dnf -y update</span>
+<span class="l l-Scalar l-Scalar-Plain">sudo dnf install -y python3-pip</span>
+<span class="l l-Scalar l-Scalar-Plain">pip3 install conan</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+<p>Installs Conan, a C/C++ package manager.
+It makes it easy to integrate continuous integration and continuous deployment pipelines, to automate dependency management when building our project.</p>
+<ul>
+<li><p>Check Conan version:</p>
+<blockquote>
+<div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Check version conan</span>
+<span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">conan --version</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+<p>Checks that Conan has been installed correctly by displaying its version.</p>
+<ul>
+<li><p>Configure CMake:</p>
+<blockquote>
+<div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure CMake</span>
+<span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="l l-Scalar l-Scalar-Plain">cmake -B build -S Engine \</span>
+<span class="l l-Scalar l-Scalar-Plain">-DCMAKE_CXX_COMPILER=g++ \</span>
+<span class="l l-Scalar l-Scalar-Plain">-DCMAKE_C_COMPILER=gcc \</span>
+<span class="l l-Scalar l-Scalar-Plain">-DCMAKE_BUILD_TYPE=Build \</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+<p>Configures the project with CMake, specifying the compiler and build type.</p>
+<ul>
+<li><p>Compile the project:</p>
+<blockquote>
+<div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Compile project</span>
+<span class="nt">run</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="l l-Scalar l-Scalar-Plain">cd Engine</span>
+<span class="l l-Scalar l-Scalar-Plain">mkdir build</span>
+<span class="l l-Scalar l-Scalar-Plain">cd build</span>
+<span class="l l-Scalar l-Scalar-Plain">cmake ..</span>
+<span class="l l-Scalar l-Scalar-Plain">make</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ul>
+<p>Compiles the project in the build directory.</p>
+</section>
+</section>
+<section id="how-to-test-the-workflow">
+<h2>How to test the workflow<a class="headerlink" href="#how-to-test-the-workflow" title="Link to this heading"></a></h2>
+<section id="pushing-modifications-to-github">
+<h3>Pushing modifications to GitHub<a class="headerlink" href="#pushing-modifications-to-github" title="Link to this heading"></a></h3>
+<blockquote>
+<div><p>To trigger the workflow :</p>
+<ol class="arabic">
+<li><p>Modify code in your local repository.</p></li>
+<li><p>Push the changes to the main or Engine branch:</p>
+<blockquote>
+<div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="l l-Scalar l-Scalar-Plain">git add .</span>
+<span class="l l-Scalar l-Scalar-Plain">git commit -m &quot;Your commit message&quot;</span>
+<span class="l l-Scalar l-Scalar-Plain">git push origin main</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div></blockquote>
+</section>
+<section id="receive-a-message-via-outlook">
+<h3>Receive a message via Outlook<a class="headerlink" href="#receive-a-message-via-outlook" title="Link to this heading"></a></h3>
+<p>To test the integration, the team will receive an e-mail indicating that changes have been made to the main or Engine branch. The message will mention that the workflow has been updated.
+Example:
+——–</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/outlook.png"><img alt="../_images/outlook.png" src="../_images/outlook.png" style="width: 600px;" /></a>
+</div></blockquote>
+</section>
+<section id="check-your-workflow-on-github">
+<h3>Check your workflow on GitHub<a class="headerlink" href="#check-your-workflow-on-github" title="Link to this heading"></a></h3>
+<blockquote>
+<div><ol class="arabic">
+<li><dl>
+<dt>Access your repository on GitHub.</dt><dd><a class="reference internal image-reference" href="../_images/github.png"><img alt="../_images/github.png" src="../_images/github.png" style="width: 600px;" /></a>
+</dd>
+</dl>
+</li>
+<li><p>Click on the Actions tab. You’ll see a list of executed workflows.</p>
+<blockquote>
+<div><p>Since we want to build two workflows (on linux and window), we’ll have two different builds.</p>
+<a class="reference internal image-reference" href="../_images/actions.png"><img alt="../_images/actions.png" src="../_images/actions.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+<li><p>Click on the latest workflow to see details of its execution, including logs and results for each step.</p></li>
+</ol>
+<ul>
+<li><p>For linux:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/build_linux.png"><img alt="../_images/build_linux.png" src="../_images/build_linux.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+<li><p>For window:</p>
+<blockquote>
+<div><a class="reference internal image-reference" href="../_images/build_window.png"><img alt="../_images/build_window.png" src="../_images/build_window.png" style="width: 600px;" /></a>
+</div></blockquote>
+</li>
+</ul>
+</div></blockquote>
+</section>
+<section id="overview-of-the-workflow-file">
+<h3>Overview of the Workflow file<a class="headerlink" href="#overview-of-the-workflow-file" title="Link to this heading"></a></h3>
+<blockquote>
+<div><div class="highlight-yaml notranslate"><div class="highlight"><pre><span></span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">workflow_linux</span>
+
+<span class="nt">on</span><span class="p">:</span>
+<span class="nt">push</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Engine</span>
+<span class="nt">pull_request</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">branches</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">main</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Engine</span>
+
+<span class="nt">jobs</span><span class="p">:</span>
+<span class="nt">build_linux</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">runs-on</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ubuntu-latest</span>
+<span class="w">    </span><span class="nt">container</span><span class="p">:</span>
+<span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">fedora:latest</span>
+
+<span class="w">    </span><span class="nt">steps</span><span class="p">:</span>
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Vérifier le code</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">uses</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">actions/checkout@v2</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Install dependencies</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">run</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">sudo dnf -y update</span>
+<span class="w">        </span><span class="no">sudo dnf install -y boost-devel</span>
+<span class="w">        </span><span class="no">sudo dnf install -y SFML-devel</span>
+<span class="w">        </span><span class="no">sudo dnf install -y gcc-c++</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Installer Conan</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">run</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">sudo dnf -y update</span>
+<span class="w">        </span><span class="no">sudo dnf install -y python3-pip</span>
+<span class="w">        </span><span class="no">pip3 install conan</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Check version conan</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">run</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">conan --version</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Configure CMake</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">run</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">cmake -B build -S Engine  \</span>
+<span class="w">        </span><span class="no">-DCMAKE_CXX_COMPILER=g++ \</span>
+<span class="w">        </span><span class="no">-DCMAKE_C_COMPILER=gcc  \</span>
+<span class="w">        </span><span class="no">-DCMAKE_BUILD_TYPE=Build \</span>
+
+<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Compiler le projet</span>
+<span class="w">        </span><span class="l l-Scalar l-Scalar-Plain">run</span><span class="p p-Indicator">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<span class="w">        </span><span class="no">cd Engine</span>
+<span class="w">        </span><span class="no">mkdir build</span>
+<span class="w">        </span><span class="no">cd build</span>
+<span class="w">        </span><span class="no">cmake ..</span>
+<span class="w">        </span><span class="no">make</span>
+</pre></div>
+</div>
+</div></blockquote>
+</section>
+</section>
+<section id="conclusion">
+<h2>Conclusion<a class="headerlink" href="#conclusion" title="Link to this heading"></a></h2>
+<p>This GitHub Actions workflow automates the process of building the R-type project using Fedora. By following the steps described above, you can test and verify that the workflow is working correctly.</p>
+</section>
+</section>
+
+
+           </div>
+          </div>
+          <footer><div class="rst-footer-buttons" role="navigation" aria-label="Footer">
+        <a href="Cross-Platform%20Overview.html" class="btn btn-neutral float-left" title="Cross-Platform Overview" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left" aria-hidden="true"></span> Previous</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>&#169; Copyright 2024, Cynthia Zinsou.</p>
+  </div>
+
+  Built with <a href="https://www.sphinx-doc.org/">Sphinx</a> using a
+    <a href="https://github.com/readthedocs/sphinx_rtd_theme">theme</a>
+    provided by <a href="https://readthedocs.org">Read the Docs</a>.
+   
+
+</footer>
+        </div>
+      </div>
+    </section>
+  </div>
+  <script>
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script> 
+
+</body>
+</html>
